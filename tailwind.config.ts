@@ -70,6 +70,10 @@ export default <Partial<Config>>{
                     '900': '#1c4540',
                     '950': '#0a2926',
                 },
+                background: {
+                    light: '#f8fafc', // light mode
+                    dark: '#1a1b1e'   // dark mode
+                }
             }
         }
     }
