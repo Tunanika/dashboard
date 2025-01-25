@@ -1,6 +1,18 @@
-# Nuxt UI Minimal Starter
+# Dashboard App
 
-Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui.nuxt.com) to learn more.
+This is a minimalistic dashboard app designed to show the time, a timer, and some daily details.
+It also includes a task manager to easily see your tasks.
+It's designed to work with smaller screens and should work fine!
+- See below for setup.
+
+## Preview
+<img width="1665" alt="image" src="https://github.com/user-attachments/assets/a2d2fe8b-1515-4036-b863-3590f143bc7d" />
+
+## Technologies
+- Nuxt 3
+- Vue
+- Nuxt UI
+- Tailwind Css
 
 ## Setup
 
@@ -9,12 +21,6 @@ Make sure to install the dependencies:
 ```bash
 # npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
 
 # bun
 bun install
@@ -28,12 +34,6 @@ Start the development server on `http://localhost:3000`:
 # npm
 npm run dev
 
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
 # bun
 bun run dev
 ```
@@ -46,12 +46,6 @@ Build the application for production:
 # npm
 npm run build
 
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
 # bun
 bun run build
 ```
@@ -61,12 +55,6 @@ Locally preview production build:
 ```bash
 # npm
 npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
 
 # bun
 bun run preview
