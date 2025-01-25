@@ -8,9 +8,48 @@
         <tasks class="mt-10 mb-10" :taskArray="tasksArr" />
         <CustomCard class="mt-10 mb-10">
           <template #header>
-            <h1 class="text-2xl font-bold">CardTitle</h1>
+            <h1 class="text-2xl font-bold">Timer</h1>
           </template>
-          <h1>THIS IS IN THE CARD</h1>
+          <div class="flex flex-col items-center gap-4">
+            <div class="text-6xl font-bold">
+              <input
+                type="number"
+                v-model="minutes"
+                @input="(e) => updateMinutes((e.target as HTMLInputElement).value)"
+                :disabled="isRunning"
+                class="w-24 bg-transparent text-center disabled:opacity-70"
+                min="0"
+              />:
+              <input
+                type="number"
+                v-model="seconds"
+                @input="(e) => updateSeconds((e.target as HTMLInputElement).value)"
+                :disabled="isRunning"
+                class="w-24 bg-transparent text-center disabled:opacity-70"
+                min="0"
+                max="59"
+              />
+            </div>
+
+            <div class="flex gap-4">
+              <UButton
+                @click="toggleTimer"
+                :disabled="minutes === 0 && seconds === 0"
+                class="px-4 py-2 bg-cinnabar-500 text-white rounded hover:bg-cinnabar-700 disabled:opacity-50"
+              >
+                {{ isRunning ? "Pause" : "Start" }}
+              </UButton>
+              <button
+                @click="resetTimer"
+                class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+              >
+                Reset
+              </button>
+            </div>
+            <div v-if="isCompleted" class="text-green-500 font-bold">
+              Time's up!
+            </div>
+          </div>
         </CustomCard>
         <ColorScheme>
           <USelect
@@ -61,4 +100,81 @@ onMounted(() => {
 onUnmounted(() => {
   if (timer) clearInterval(timer);
 });
+
+//timer
+
+interface TimerState {
+  minutes: number;
+  seconds: number;
+  isRunning: boolean;
+}
+
+const minutes = ref<number>(0);
+const seconds = ref<number>(0);
+const isRunning = ref<boolean>(false);
+const isCompleted = ref<boolean>(false);
+let interval: ReturnType<typeof setInterval> | null = null;
+const validateInput = (value: number, max: number = Infinity): number => {
+  return Math.max(0, Math.min(Math.floor(value), max));
+};
+
+const updateMinutes = (value: string): void => {
+  if (!isRunning.value) {
+    minutes.value = validateInput(parseInt(value) || 0);
+    isCompleted.value = false;
+  }
+};
+
+const updateSeconds = (value: string): void => {
+  if (!isRunning.value) {
+    seconds.value = validateInput(parseInt(value) || 0, 59);
+    isCompleted.value = false;
+  }
+};
+
+const toggleTimer = (): void => {
+  if (minutes.value === 0 && seconds.value === 0) return;
+
+  isRunning.value = !isRunning.value;
+  if (isRunning.value) {
+    interval = setInterval((): void => {
+      if (seconds.value === 0) {
+        if (minutes.value === 0) {
+          resetTimer();
+          isCompleted.value = true;
+          return;
+        }
+        minutes.value--;
+        seconds.value = 59;
+      } else {
+        seconds.value--;
+      }
+    }, 1000);
+  } else {
+    if (interval) clearInterval(interval);
+  }
+};
+
+const resetTimer = (): void => {
+  if (interval) clearInterval(interval);
+  isRunning.value = false;
+  minutes.value = 25;
+  seconds.value = 0;
+  isCompleted.value = false;
+};
+
+onUnmounted((): void => {
+  if (interval) clearInterval(interval);
+});
 </script>
+<style scoped>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+</style>

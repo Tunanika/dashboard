@@ -14,7 +14,7 @@
           class="text-2xl"
           @click="taskArray[key].completed = !taskArray[key].completed"
         />
-        <h1>{{ singleTask.title }}</h1>
+        <h1 class="text-xl">{{ singleTask.title }}</h1>
       </div>
     </UCard>
   </div>
