@@ -3,7 +3,19 @@
 This is a minimalistic dashboard app designed to show the time, a timer, and some daily details.
 It also includes a task manager to easily see your tasks.
 It's designed to work with smaller screens and should work fine!
-- See below for setup.
+## Features
+- Minimalistic
+- Timer
+- Task Manager
+- Weather (upcoming feature)
+- Works with small screens
+
+
+[Live Preview](https://dashboard-gdtk.onrender.com)
+
+### Setup
+- You can access from this link: https://dashboard-gdtk.onrender.com
+- See below for local setup.
 
 ## Preview
 <img width="1665" alt="image" src="https://github.com/user-attachments/assets/a2d2fe8b-1515-4036-b863-3590f143bc7d" />
