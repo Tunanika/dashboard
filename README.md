@@ -11,10 +11,9 @@ It's designed to work with smaller screens and should work fine!
 - Works with small screens
 
 
-[Live Preview](https://dashboard-gdtk.onrender.com)
+# [Live Preview](https://dashboard-gdtk.onrender.com)
 
 ### Setup
-- You can access from this link: https://dashboard-gdtk.onrender.com
 - See below for local setup.
 
 ## Preview
