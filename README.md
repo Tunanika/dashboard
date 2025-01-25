@@ -10,6 +10,7 @@ It's designed to work with smaller screens and should work fine!
 
 ### Using the timer
 <img width="530" alt="image" src="https://github.com/user-attachments/assets/d9a6bf4a-8487-4998-be8d-94369cc6cd7d" />
+
 You can change the timer by clicking on it and setting the time you want!
 
 # WORK IN PROGRESS!!!
